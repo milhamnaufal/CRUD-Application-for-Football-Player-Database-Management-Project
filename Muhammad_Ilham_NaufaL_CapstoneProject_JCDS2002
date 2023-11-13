@@ -1,0 +1,297 @@
+# DATA CAPSTONE
+data_klub = [{"Id Pemain" : 1,
+              "Nama" : "Aditio",
+              "Usia" : 23,
+              "Nomor Punggung" : 6,
+              "Posisi Bermain" : "Gelandang"},
+             {"Id Pemain" : 2,
+              "Nama" : "Rejan",
+              "Usia" : 19,
+              "Nomor Punggung" : 10,
+              "Posisi Bermain" : "Penyerang"},
+             {"Id Pemain" : 3,
+              "Nama" : "Dzaki",
+              "Usia" : 17,
+              "Nomor Punggung" : 2,
+              "Posisi Bermain" : "Bek"},
+              {"Id Pemain" : 4,
+              "Nama" : "Ihwan",
+              "Usia" : 19,
+              "Nomor Punggung" : 1,
+              "Posisi Bermain" : "Kiper"},
+             {"Id Pemain" : 5,
+              "Nama" : "Raihan",
+              "Usia" : 31,
+              "Nomor Punggung" : 11,
+              "Posisi Bermain" : "Bek"}]
+
+
+# ================================================
+# # FUNCTION UNTUK MENAMPILKAN MENU UTAMA
+def tampilan_menu_utama():
+    print('''Silahkan pilih menu
+    1. Menampilkan data pemain
+    2. Update data pemain
+    3. Menambahkan data pemain
+    4. Delete data pemain
+    5. Exit
+          ''')
+
+# ==========================================================
+# FUNCTION MENU UTAMA 1 (READ AND CREATE)
+# Function untuk menampilkan data buah
+def tampil_data_pemain():
+    from tabulate import tabulate
+    data_klub
+    headers = ["Id Pemain", "Nama", "Usia", "Nomor Punggung", "Posisi Bermain"]
+    tabel_data_klub = []
+
+    for data in data_klub:
+        baris = [data["Id Pemain"], data["Nama"], data["Usia"], data["Nomor Punggung"], data["Posisi Bermain"]]
+        tabel_data_klub.append(baris)
+    
+    print(tabulate(tabel_data_klub, headers, tablefmt="grid"))
+    
+# ===================================================
+# Function untuk filtering data berdasarkan primary key (ID)
+def filter_data():
+    temukan_id = int(input("Masukkan ID yang ingin dicari:"))
+    found = False
+    for index, id in enumerate(data_klub):
+        if id["Id Pemain"] == temukan_id:
+            print(data_klub[index])
+            found = True
+            break
+    if not found:
+            print("Data yang anda cari tidak ditemukan")
+            # break
+
+# ==============================================
+# FUNCTION MENU UTAMA 2 (UPDATE)
+def update_data():
+    input_yang_ingin_update = int(input(''' Silahkan pilih menu
+1. ID 
+2. Nama 
+3. Usia 
+4. Nomor Punggung 
+5. Posisi Bermain
+6. Kembali ke menu sebelumnya
+            '''))
+    while True:
+        if input_yang_ingin_update == 1:
+            Input_Primary_Key = int(input("Masukkan primary key yang anda ingin update datanya : "))
+            found = False
+            for index, pemain in enumerate(data_klub):
+            # Mencari pemain dengan primary key yang sesuai
+                if pemain["Id Pemain"] == Input_Primary_Key:
+                    input_ID = int(input(f"Masukkan ID baru untuk pemain ke-{index}: "))
+                    data_klub[index]["Id Pemain"] = input_ID
+                    found = True
+                    print(data_klub)
+                    return
+            else:
+                print("ID tidak ditemukan. Silakan coba lagi.")
+            continue
+        elif input_yang_ingin_update == 2:
+            Input_Primary_Key = int(input("Masukkan ID pemain yang ingin diubah namanya : "))
+            found = False
+            for index, pemain in enumerate(data_klub):
+            # Mencari pemain dengan ID yang sesuai
+                if pemain["Id Pemain"] == Input_Primary_Key:
+                    input_Nama = input(f"Masukkan nama baru untuk pemain : ")
+                    data_klub[index]["Nama"] = input_Nama
+                    found = True
+                    print(data_klub)
+                    return
+            else:
+                print("ID tidak ditemukan. Silakan coba lagi.")
+            continue
+        elif input_yang_ingin_update == 3:
+            Input_Primary_Key = int(input("Masukkan ID pemain yang ingin diubah namanya : "))
+            found = False
+            for index, pemain in enumerate(data_klub):
+            # Mencari pemain dengan ID yang sesuai
+                if pemain["Id Pemain"] == Input_Primary_Key:
+                    input_Usia = int(input(f"Masukkan usia pemain : "))
+                    data_klub[index]["Usia"] = input_Usia
+                    found = True
+                    print(data_klub)
+                    return
+            else:
+                print("ID tidak ditemukan. Silakan coba lagi.")
+            continue
+        elif input_yang_ingin_update == 4:
+            Input_Primary_Key = int(input("Masukkan ID pemain yang ingin diubah namanya : "))
+            found = False
+            for index, pemain in enumerate(data_klub):
+            # Mencari pemain dengan ID yang sesuai
+                if pemain["Id Pemain"] == Input_Primary_Key:
+                    input_nomor = int(input(f"Masukkan nomor pemain : "))
+                    data_klub[index]["Nomor Punggung"] = input_nomor
+                    found = True
+                    print(data_klub)
+                    return
+            else:
+                print("ID tidak ditemukan. Silakan coba lagi.")
+            continue
+        elif input_yang_ingin_update == 5:
+            Input_Primary_Key = int(input("Masukkan ID pemain yang ingin diubah namanya : "))
+            found = False
+            for index, pemain in enumerate(data_klub):
+            # Mencari pemain dengan ID yang sesuai
+                if pemain["Id Pemain"] == Input_Primary_Key:
+                    input_posisi = input(f"Masukkan posisi pemain : ")
+                    data_klub[index]["Posisi Bermain"] = input_posisi
+                    found = True
+                    print(data_klub)
+                    return
+            else:
+                print("ID tidak ditemukan. Silakan coba lagi.")
+            continue
+        elif input_yang_ingin_update == 6:
+            break
+        
+        
+# ==============================================================================================
+# FUNCTION MENU UTAMA 3 (MENAMBAHKAN DATA PEMAIN)
+
+def tambah_data_pemain():
+    id_pemain = int(input("Masukkan ID pemain: "))
+
+    # Memeriksa apakah ID buah sudah ada
+    if any(pemain['Id Pemain'] == id_pemain for pemain in data_klub):
+        print(f"Data dengan ID {id_pemain} sudah ada. Tidak dapat menambahkan data yang sama.\n")
+    else:
+        # nama_id = int(input("Masukkan ID"))
+        nama_pemain = input("Masukkan nama pemain: ")
+        usia = int(input("Masukkan usia: "))
+        nomor = int(input("Masukkan nomor: "))
+        posisi = input("Masukkan posisi: ")
+
+        # Membuat data buah baru
+        pemain_baru = {
+            "Id Pemain": id_pemain,
+            "Nama": nama_pemain,
+            "Usia": usia,
+            "Nomor Punggung": nomor,
+            "Posisi Bermain": posisi
+        }
+
+        # Menambahkan data buah baru ke dalam list_buah
+        data_klub.append(pemain_baru)
+
+        print(f"Data buah dengan ID {id_pemain} berhasil ditambahkan!\n")
+        print(data_klub)
+
+# =========================================================================
+# FUNCTION UNTUK MENU UTAMA 4 (DELETE DATA)
+def delete_data():
+    while True: 
+        input_id_yang_ingin_delete = int(input("Masukkan data yang ingin di delete berdasarkan ID :"))
+        for index, item in enumerate(data_klub):
+            if data_klub[index]["Id Pemain"] == input_id_yang_ingin_delete:
+                yakin_hapus = input("Yakin hapus ? y/n")
+                if yakin_hapus == "y":
+                    del data_klub[0]
+                    print(f"Data dengan id {input_id_yang_ingin_delete} telah dihapus ")
+                    print(data_klub)
+                elif yakin_hapus == "n":
+                    print("Terima kasih!")
+                return
+        else:
+            print("ID tidak ditemukan. Silakan coba lagi.")
+            continue
+
+
+# ========================================
+# CODINGAN UTAMA
+
+while True:
+    tampilan_menu_utama()
+    input_menu_utama = int(input("Pilih menu yang anda inginkan: "))
+    if input_menu_utama ==1:
+        while True:
+            input_pada_menu_1 = int(input('''Silahkan pilih menu
+1. Tampilkan data 
+2. Pencarian data
+3. Kembali ke menu utama
+            '''))
+            if input_pada_menu_1 == 1:
+                while True:
+                    tampilan_data = tampil_data_pemain()
+                    print(tampilan_data)
+                    break
+            elif input_pada_menu_1 == 2:
+                while True:
+                    filter_buah = filter_data()
+                    print(filter_data)
+                    pilihan = input("Apakah anda ingin melanjutkan pencarian data ? y/n")
+                    if pilihan == "n":
+                        break
+                    elif pilihan != "y":
+                        print("Menu yang anda pilih tidak valid. Silahkan pilih 'y' untuk melanjutkan atau 'n' untuk kembali.")
+            elif input_pada_menu_1 == 3:
+                break
+            else:
+                print("Menu yang anda pilih tidak valid. Silahkan pilih menu yang sesuai")
+    elif input_menu_utama == 2:
+        while True:
+            input_pada_menu_2 = int(input('''Silahkan pilih menu
+1. Update data pemain
+2. Kembali ke menu utama
+            '''))
+            if input_pada_menu_2 == 1:
+                while True:
+                    updatedata = update_data()
+                    break
+                #     pilihan = input("Apakah anda ingin melanjutkan update ?  y/n")
+                #     if pilihan == "n":
+                #         break  
+                # if pilihan == "n":
+                #     continue  
+            elif input_pada_menu_2 == 2:
+                break 
+            else:
+                print("Menu yang anda pilih tidak valid. Silahkan pilih menu yang sesuai")
+    elif input_menu_utama == 3:
+         while True:
+            input_pada_menu_3 = int(input('''Silahkan pilih menu
+1. Menambah data pemain
+2. Kembali ke menu utama
+            '''))
+            if input_pada_menu_3 == 1:
+                while True:
+                    updatedata = tambah_data_pemain()
+                    pilihan = input("Apakah anda ingin melanjutkan nambah data pemain ? y/n")
+                    if pilihan == "n":
+                        break  
+                if pilihan == "n":
+                    continue  
+            elif input_pada_menu_3 == 2:
+                break
+            else:
+                print("Menu yang anda pilih tidak valid. Silahkan pilih menu yang sesuai") 
+    elif input_menu_utama == 4:
+         while True:
+            input_pada_menu_4 = int(input('''Silahkan pilih menu
+1. Delete data pemain
+2. Kembali ke menu utama
+            '''))
+            if input_pada_menu_4 == 1:
+                while True:
+                    delete_data1 = delete_data()
+                    print(delete_data1)
+                    pilihan = input("Apakah anda ingin melanjutkan delete data pemain ? y/n")
+                    if pilihan == "n":
+                        break  
+                if pilihan == "n":
+                    continue  
+            elif input_pada_menu_4 == 2:
+                break
+            else:
+                print("Menu yang anda pilih tidak valid. Silahkan pilih menu yang sesuai")
+    elif input_menu_utama==5:
+        print("Terima kasih!")
+        break
+    else:
+        print("Menu yang anda pilih tidak valid! Silahkan pilih menu yang sesuai")
