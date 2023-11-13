@@ -207,6 +207,8 @@ def delete_data():
 # CODINGAN UTAMA
 
 while True:
+    print("SELAMAT DATANG DI KLUB TANGERANG UNITED")
+    print("="*40)
     tampilan_menu_utama()
     input_menu_utama = int(input("Pilih menu yang anda inginkan: "))
     if input_menu_utama ==1:
